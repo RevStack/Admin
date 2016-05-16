@@ -1,0 +1,19 @@
+{
+  "name": "RevStack.Admin",
+  "version": "1.0.0",
+  "description": "Identity and commerce administration class library",
+  "main": "RevStack.Admin.sln",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/RevStack/Admin.git"
+  },
+  "author": "S. Francis",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/RevStack/Admin/issues"
+  },
+  "homepage": "https://github.com/RevStack/Admin"
+}
