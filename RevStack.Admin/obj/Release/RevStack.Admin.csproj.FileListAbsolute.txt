@@ -88,3 +88,4 @@
 \\psf\Home\Documents\Development\mono\RevStack\updated\RevStack.Admin\RevStack.Admin\bin\Release\zh-Hant\Microsoft.Spatial.resources.dll
 \\psf\Home\Documents\Development\mono\RevStack\updated\RevStack.Admin\RevStack.Admin\obj\Release\RevStack.Admin.dll
 \\psf\Home\Documents\Development\mono\RevStack\updated\RevStack.Admin\RevStack.Admin\obj\Release\RevStack.Admin.pdb
+\\psf\Home\Documents\Development\mono\RevStack\updated\RevStack.Admin\RevStack.Admin\obj\Release\RevStack.Admin.csprojResolveAssemblyReference.cache

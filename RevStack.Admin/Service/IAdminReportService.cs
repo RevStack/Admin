@@ -9,4 +9,10 @@ namespace RevStack.Admin
         AdminReportModel Get();
         Task<AdminReportModel> GetAsync();
     }
+
+    public interface IAdminUserReportService
+    {
+        AdminReportModel Get();
+        Task<AdminReportModel> GetAsync();
+    }
 }

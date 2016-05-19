@@ -119,6 +119,7 @@
     <Compile Include="Service\AdminExtendedUserService.cs" />
     <Compile Include="Service\AdminLoginService.cs" />
     <Compile Include="Service\AdminOrderService.cs" />
+    <Compile Include="Service\AdminUserReportService .cs" />
     <Compile Include="Service\AdminReportService.cs" />
     <Compile Include="Service\AdminUserOrderService.cs" />
     <Compile Include="Service\AdminUserService.cs" />
