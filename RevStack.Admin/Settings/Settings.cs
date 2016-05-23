@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Configuration;
+using RevStack.Configuration;
 
 namespace RevStack.Admin
 {
@@ -9,9 +9,7 @@ namespace RevStack.Admin
         {
             get
             {
-                string username = ConfigurationManager.AppSettings["Admin.Username"];
-                if (!string.IsNullOrEmpty(username)) return username;
-                else return "admin@revstack.io";
+                return Configuration.Admin.UserName;
             }
         }
 
@@ -19,63 +17,49 @@ namespace RevStack.Admin
         {
             get
             {
-                string password = ConfigurationManager.AppSettings["Admin.Password"];
-                if (!string.IsNullOrEmpty(password)) return password;
-                else return "admin!";
+                return Configuration.Admin.Password;
             }
         }
         public static string Name
         {
             get
             {
-                string name = ConfigurationManager.AppSettings["Admin.Name"];
-                if (!string.IsNullOrEmpty(name)) return name;
-                else return "Admin";
+                return Configuration.Admin.Name;
             }
         }
         public static bool AllowOrderDelete
         {
             get
             {
-                string allow = ConfigurationManager.AppSettings["Admin.Order.Delete"];
-                if (!string.IsNullOrEmpty(allow)) return Convert.ToBoolean(allow);
-                else return true;
+                return Configuration.Admin.AllowOrderDelete;
             }
         }
         public static bool AllowUserDelete
         {
             get
             {
-                string allow = ConfigurationManager.AppSettings["Admin.User.Delete"];
-                if (!string.IsNullOrEmpty(allow)) return Convert.ToBoolean(allow);
-                else return true;
+                return Configuration.Admin.AllowUserDelete;
             }
         }
         public static string CompanyName
         {
             get
             {
-                string result = ConfigurationManager.AppSettings["Admin.Company.Notification.Name"];
-                if (!string.IsNullOrEmpty(result)) return result;
-                else return "XYZ, Inc";
+                return Company.Name;
             }
         }
         public static string CompanyEmail
         {
             get
             {
-                string result = ConfigurationManager.AppSettings["Admin.Company.Notification.Email"];
-                if (!string.IsNullOrEmpty(result)) return result;
-                else return "dev.null@localhost";
+                return Company.NotificationEmail;
             }
         }
         public static string CompanySms
         {
             get
             {
-                string result = ConfigurationManager.AppSettings["Admin.Company.Notification.Sms"];
-                if (!string.IsNullOrEmpty(result)) return result;
-                else return "0000000000";
+                return Company.NotificationSms;
             }
         }
     }

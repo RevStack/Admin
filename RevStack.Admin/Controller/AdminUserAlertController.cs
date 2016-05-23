@@ -2,17 +2,14 @@
 using System.Web.Http;
 using System.Linq;
 using System.Threading.Tasks;
-using RevStack.Commerce;
 using RevStack.Notification;
 
 namespace RevStack.Admin
 {
-    public class AdminUserAlertController<TOrder,TPayment,TKey> : ApiController
-        where TOrder : class, IOrder<TPayment,TKey>
-        where TPayment : class, IPayment
+    public class AdminUserAlertController<TKey> : ApiController
     {
         private readonly INotifyTaskList<TKey> _taskList;
-        public AdminUserAlertController(IAdminOrderService<TOrder,TPayment,TKey> service, INotifyTaskList<TKey> taskList)
+        public AdminUserAlertController(INotifyTaskList<TKey> taskList)
         {
             _taskList = taskList;
         }

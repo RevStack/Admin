@@ -10,7 +10,7 @@ using AutoMapper;
 
 namespace RevStack.Admin
 {
-    public class AdminExtendedUserService<TUser, TUserModel, TProfile, TCreateProfile, TUserManager,TOrder,TPayment, TKey> : AdminUserService<TUser,TUserModel,TProfile,TCreateProfile,TUserManager,TKey>
+    public class AdminExtendedUserService<TUser, TUserModel, TProfile, TCreateProfile, TUserManager,TOrder,TPayment, TKey> : AdminUserService<TUser,TUserModel,TProfile,TCreateProfile,TUserManager,TKey>, IAdminExtendedUserService<TUserModel,TProfile,TCreateProfile,TOrder,TPayment,TKey>
         where TUser : class, IIdentityUser<TKey>
         where TUserModel : class, IAdminUserModel<TKey>
         where TProfile : class, IProfileModel<TKey>

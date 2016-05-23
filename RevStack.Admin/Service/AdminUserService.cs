@@ -94,7 +94,12 @@ namespace RevStack.Admin
         {
             
             var user = _applicationUserFactory();
+            var id = user.Id;
             user = user.CopyPropertiesFrom(entity,true);
+            user.Id = id;
+            entity.Id = id;
+            user.SignUpDate = DateTime.Now;
+            user.UserName = user.Email;
             var userManager = _userManagerFactory();
             var result=await userManager.CreateAsync(user, entity.Password);
             if(!result.Succeeded)
@@ -107,6 +112,10 @@ namespace RevStack.Admin
 
         public bool Validate(TCreateProfile entity)
         {
+            if(string.IsNullOrEmpty(entity.Password))
+            {
+                return false;
+            }
             var existing = _repository.Find(x => x.Email == entity.Email);
             if(existing.Any())
             {

@@ -4,7 +4,7 @@ using RevStack.Identity.Mvc;
 
 namespace RevStack.Admin
 {
-    public class CreateProfileModel<TKey> : ProfileBaseModel<TKey>
+    public class CreateProfileBaseModel<TKey> : ProfileBaseModel<TKey>,ICreateProfileModel<TKey>
     {
         [Required]
         [DataType(DataType.Password)]

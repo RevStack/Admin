@@ -57,6 +57,9 @@
     <Reference Include="RevStack.Commerce">
       <HintPath>\\Mac\Home\Documents\Development\mono\RevStack\updated\RevStack.Commerce\RevStack.Commerce\bin\Release\RevStack.Commerce.dll</HintPath>
     </Reference>
+    <Reference Include="RevStack.Configuration">
+      <HintPath>..\..\RevStack.Configuration\RevStack.Configuration\bin\Release\RevStack.Configuration.dll</HintPath>
+    </Reference>
     <Reference Include="RevStack.Identity">
       <HintPath>\\Mac\Home\Documents\Development\mono\RevStack\updated\RevStack.Identity\RevStack.Identity\bin\Release\RevStack.Identity.dll</HintPath>
     </Reference>
@@ -80,10 +83,12 @@
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web" />
     <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
       <Private>True</Private>
     </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL" />
     <Reference Include="System.Web.OData, Version=5.9.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
       <HintPath>..\packages\Microsoft.AspNet.OData.5.9.0\lib\net45\System.Web.OData.dll</HintPath>
       <Private>True</Private>
@@ -98,12 +103,14 @@
   <ItemGroup>
     <Compile Include="Controller\AdminDiscountController.cs" />
     <Compile Include="Controller\AdminDiscountValidateController.cs" />
+    <Compile Include="Controller\AdminExtendedUserController.cs" />
     <Compile Include="Controller\AdminLoginController.cs" />
     <Compile Include="Controller\AdminOrderAlertController.cs" />
     <Compile Include="Controller\AdminOrderController.cs" />
     <Compile Include="Controller\AdminOrderStatusController.cs" />
     <Compile Include="Controller\AdminReportController.cs" />
     <Compile Include="Controller\AdminUserAlertController.cs" />
+    <Compile Include="Controller\AdminUserAlertMvcController.cs" />
     <Compile Include="Controller\AdminUserController.cs" />
     <Compile Include="Controller\AdminUserOrderController.cs" />
     <Compile Include="Controller\AdminUserResetPasswordController.cs" />
@@ -116,6 +123,7 @@
     <Compile Include="Model\IAdminUserModel.cs" />
     <Compile Include="Model\ICreateProfileModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Service\AdminAlertMessageService.cs" />
     <Compile Include="Service\AdminExtendedUserService.cs" />
     <Compile Include="Service\AdminLoginService.cs" />
     <Compile Include="Service\AdminOrderService.cs" />
@@ -123,6 +131,8 @@
     <Compile Include="Service\AdminReportService.cs" />
     <Compile Include="Service\AdminUserOrderService.cs" />
     <Compile Include="Service\AdminUserService.cs" />
+    <Compile Include="Service\IAdminAlertMessageService.cs" />
+    <Compile Include="Service\IAdminExtendedUserService.cs" />
     <Compile Include="Service\IAdminLoginService.cs" />
     <Compile Include="Service\IAdminOrderService.cs" />
     <Compile Include="Service\IAdminReportService.cs" />

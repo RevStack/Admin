@@ -9,19 +9,22 @@ using System.Threading.Tasks;
 using RevStack.Identity.Mvc;
 using RevStack.Mvc;
 using RevStack.Notification;
+using RevStack.Commerce;
 
 namespace RevStack.Admin
 {
 
-    public class AdminUserController<TUserModel, TProfile, TCreateProfile, TKey> : ApiController
+    public class AdminExtendedUserController<TUserModel, TProfile, TCreateProfile,TOrder,TPayment, TKey> : ApiController
         where TUserModel : class, IAdminUserModel<TKey>
         where TProfile : class, IProfileModel<TKey>
         where TCreateProfile : class, ICreateProfileModel<TKey>
+        where TOrder : class, IOrder<TPayment, TKey>
+        where TPayment : class, IPayment
     {
-        protected IAdminUserService<TUserModel,TProfile,TCreateProfile,TKey> _service;
+        protected IAdminExtendedUserService<TUserModel,TProfile,TCreateProfile,TOrder,TPayment,TKey> _service;
         protected INotifyTaskList<TKey> _notifyTaskList;
         protected Func<NotifyAlert<TKey>> _notifyAlertFactory;
-        public AdminUserController(IAdminUserService<TUserModel,TProfile,TCreateProfile,TKey> service, INotifyTaskList<TKey> notifyTaskList,Func<NotifyAlert<TKey>> notifyAlertFactory)
+        public AdminExtendedUserController(IAdminExtendedUserService<TUserModel, TProfile, TCreateProfile, TOrder, TPayment, TKey> service, INotifyTaskList<TKey> notifyTaskList, Func<NotifyAlert<TKey>> notifyAlertFactory)
         {
             _service = service;
             _notifyTaskList = notifyTaskList;
@@ -51,7 +54,7 @@ namespace RevStack.Admin
                 return new ModelErrorResult(Request, modelErrors);
             }
             var isValid = await _service.ValidateAsync(entity);
-            if(!isValid)
+            if (!isValid)
             {
                 return new ContentErrorResult(Request, HttpStatusCode.Forbidden, "User email already exists");
             }
@@ -60,7 +63,7 @@ namespace RevStack.Admin
             {
                 return new ContentErrorResult(Request, HttpStatusCode.BadRequest, result.Item3);
             }
-            entity.Id = result.Item1.Id;
+
             NotifyUser(entity);
 
             return Ok(result);
@@ -79,7 +82,7 @@ namespace RevStack.Admin
 
         public virtual async Task<IHttpActionResult> Delete(TKey id)
         {
-            if(!Settings.AllowUserDelete)
+            if (!Settings.AllowUserDelete)
             {
                 return new ContentErrorResult(Request, HttpStatusCode.Forbidden, "Delete user not allowed");
             }
@@ -91,10 +94,9 @@ namespace RevStack.Admin
         protected virtual void NotifyUser(TCreateProfile entity)
         {
             string newLine = Environment.NewLine;
-            string value = Settings.CompanyName + " user registration notice. " + newLine + newLine + "Username: " + entity.Email + " " + newLine + "Password: " + entity.Password; 
+            string value = Settings.CompanyName + " user registration notice. " + newLine + newLine + "Username: " + entity.Email + " " + newLine + "Password: " + entity.Password;
 
             var alert = _notifyAlertFactory();
-            alert.Id = entity.Id;
             alert.Date = DateTime.Now;
             alert.Email = entity.Email;
             alert.IsAuthenticated = true;
@@ -103,9 +105,10 @@ namespace RevStack.Admin
             alert.Key = "User Registration";
             alert.Value = value;
 
-            var tasks = _notifyTaskList.Tasks.Where(x => x.TaskType == NotifyTaskType.UserSignUp);
+            var tasks = _notifyTaskList.Tasks.Where(x => x.TaskType == NotifyTaskType.UserAlert);
             tasks.ToList().ForEach(x => x.RunAsync(alert));
         }
         #endregion
     }
 }
+
