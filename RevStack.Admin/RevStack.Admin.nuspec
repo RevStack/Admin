@@ -1,0 +1,17 @@
+<?xml version="1.0"?>
+<package >
+  <metadata>
+    <id>RevStack.Admin</id>
+    <version>1.0.1</version>
+    <title>RevStack.Admin</title>
+    <authors>Scott Francis, David Sheets</authors>
+    <owners>D. Sheets, S. Francis</owners>
+    <licenseUrl>https://github.com/RevStack/Admin/blob/master/LICENSE</licenseUrl>
+    <projectUrl>https://github.com/RevStack/Admin.git</projectUrl>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>Identity and commerce administration class library.</description>
+    <releaseNotes>Initial release.</releaseNotes>
+    <copyright>Copyright 2016 Managed Information Solutions, LLC</copyright>
+    <tags>RevStack Commerce Ecommerce Identity</tags>
+  </metadata>
+</package>
