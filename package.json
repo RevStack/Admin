@@ -1,6 +1,6 @@
 {
   "name": "RevStack.Admin",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "Identity and commerce administration class library",
   "main": "RevStack.Admin.sln",
   "scripts": {
